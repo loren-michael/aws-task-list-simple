@@ -16,22 +16,30 @@ function App() {
   const [tasks, setTasks] = useState([])
   const axios = require('axios');
 
-  const fetchTasks = async () => {
-    // console.log(API_URL)
-    // try {
-    //   const { data } = axios.get(API_URL)
-    //   .then(r => console.log(r))
-    //   // console.log(data)
-    //   setTasks(data)
-    // } catch (err) {
-    //   console.log(err)
-    // }
-    console.log("fetch tasks function")
-    const { data } = axios.get(API_URL)
-    console.log(data)
-    setTasks(data)
+  // const fetchTasks = async () => {
+  //   // console.log(API_URL)
+  //   // try {
+  //   //   const { data } = axios.get(API_URL)
+  //   //   .then(r => console.log(r))
+  //   //   // console.log(data)
+  //   //   setTasks(data)
+  //   // } catch (err) {
+  //   //   console.log(err)
+  //   // }
+  //   console.log("fetch tasks function")
+  //   const { data } = axios.get(API_URL)
+  //   console.log(data)
+  //   setTasks(data)
 
-  };
+  // };
+
+
+  function fetchTasks() {
+    fetch(API_URL)
+    .then(r => r.json())
+    .then(data => console.log(data))
+  }
+
 
   useEffect(() => {
     // console.log("useeffect fetch tasks")
