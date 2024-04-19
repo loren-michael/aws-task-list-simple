@@ -14,7 +14,7 @@ const darkTheme = createTheme({
 
 function App() {
   const [tasks, setTasks] = useState([])
-  const axios = require('axios');
+  // const axios = require('axios');
 
   const fetchTasks = async () => {
     // console.log(API_URL)
