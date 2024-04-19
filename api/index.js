@@ -1,7 +1,8 @@
-import express from 'express';
+import express from "express";
 import serverless from "serverless-http";
-import cors from 'cors';
-import { fetchTasks, createTasks, updateTasks, deleteTasks } from "./task";
+import cors from "cors";
+import { fetchTasks, createTasks, updateTasks, deleteTasks } from "./task.js";
+
 const app = express();
 const port = 3001;
 
@@ -11,52 +12,53 @@ if (process.env.DEVELOPMENT) {
   app.use(cors());
 }
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
+app.get("/", (req, res) => {
+  res.send("Hello World!");
 });
 
-app.get('/task', (req, res) => {
-  try{
+app.get("/task", async (req, res) => {
+  try {
     const tasks = await fetchTasks();
-    res.send(tasks.Items)
+    res.send(tasks.Items);
   } catch (err) {
-    res.status(400).send(`Error fetching tasks: ${err}`)
+    res.status(400).send(`Error fetching tasks: ${err}`);
   }
 });
 
-app.post('/task', (req, res) => {
+app.post("/task", async (req, res) => {
   try {
     const task = req.body;
     const response = await createTasks(task);
     res.send(response);
   } catch (err) {
-    res.status(400).send(`Error creating task: ${err}`)
+    res.status(400).send(`Error creating tasks: ${err}`);
   }
 });
 
-app.put('/task', (req, res) => {
+app.put("/task", async (req, res) => {
   try {
     const task = req.body;
     const response = await updateTasks(task);
     res.send(response);
   } catch (err) {
-    res.status(400).send(`Error updating task: ${err}`)
+    res.status(400).send(`Error updating tasks: ${err}`);
   }
 });
 
-app.delete('/task/:id', (req, res) => {
+app.delete("/task/:id", async (req, res) => {
   try {
-    const {id} = req.params;
-    const response = await deleteTasks(id)
+    const { id } = req.params;
+    const response = await deleteTasks(id);
+    res.send(response);
   } catch (err) {
-    res.status(400).send(`Error deleting task: ${err}`)
+    res.status(400).send(`Error deleting tasks: ${err}`);
   }
 });
 
 if (process.env.DEVELOPMENT) {
   app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`)
+    console.log(`Example app listening on port ${port}`);
   });
-};
+}
 
-export const handler = serverless(app)
+export const handler = serverless(app);
