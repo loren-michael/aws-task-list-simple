@@ -18,14 +18,16 @@ function App() {
 
   const fetchTasks = async () => {
     // console.log(API_URL)
-    try {
-      const { data } = axios.get(API_URL)
-      .then(r => console.log(r))
-      // console.log(data)
-      setTasks(data)
-    } catch (err) {
-      console.log(err)
-    }
+    // try {
+    //   const { data } = axios.get(API_URL)
+    //   .then(r => console.log(r))
+    //   // console.log(data)
+    //   setTasks(data)
+    // } catch (err) {
+    //   console.log(err)
+    // }
+    console.log("fetch tasks function")
+    axios.get(API_URL).then(r => console.log(r))
   };
 
   useEffect(() => {
