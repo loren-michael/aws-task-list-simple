@@ -3,7 +3,7 @@ import { ThemeProvider, createTheme } from "@mui/material";
 import CssBaseline from '@mui/material/CssBaseline';
 import { AddTaskForm } from "./components/AddTaskForm";
 import { Task } from './components/Task';
-import axios from 'axios';
+// import axios from 'axios';
 import { API_URL } from './utils';
 
 const darkTheme = createTheme({
@@ -14,7 +14,7 @@ const darkTheme = createTheme({
 
 function App() {
   const [tasks, setTasks] = useState([])
-  // const axios = require('axios');
+  const axios = require('axios');
 
   const fetchTasks = async () => {
     // console.log(API_URL)
@@ -43,9 +43,9 @@ function App() {
     <ThemeProvider theme={ darkTheme }>
       <CssBaseline />
       <AddTaskForm fetchTasks={fetchTasks} />
-      {tasks.map((task) => (
+      {/* {tasks.map((task) => (
         <Task key={task.id} task={task} fetchTasks={fetchTasks} />
-      ))}
+      ))} */}
     </ThemeProvider>
   );
 };
