@@ -37,7 +37,7 @@ function App() {
   function fetchTasks() {
     fetch(API_URL)
     .then(r => r.json())
-    .then(data => console.log(data))
+    .then(data => setTasks(data))
   }
 
 
