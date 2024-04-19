@@ -16,9 +16,10 @@ function App() {
   const [tasks, setTasks] = useState([])
 
   const fetchTasks = async () => {
-    console.log(API_URL)
+    // console.log(API_URL)
     try {
       const { data } = axios.get(API_URL)
+      console.log(data)
       setTasks(data)
     } catch (err) {
       console.log(err)
@@ -26,7 +27,7 @@ function App() {
   };
 
   useEffect(() => {
-    console.log("useeffect fetch tasks")
+    // console.log("useeffect fetch tasks")
     fetchTasks();
   }, [])
   
