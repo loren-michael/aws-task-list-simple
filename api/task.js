@@ -1,4 +1,4 @@
-import { ListTablesCommand, DynamoDBClient } from "@aws-sdk/client-dynamodb";
+import { DynamoDBClient } from "@aws-sdk/client-dynamodb";
 import {
   UpdateCommand,
   PutCommand,
@@ -17,9 +17,7 @@ export const fetchTasks = async () => {
     ProjectionExpression: "id, #name, completed",
     TableName: "Tasks",
   });
-
   const response = await docClient.send(command);
-
   return response;
 };
 
@@ -33,9 +31,7 @@ export const createTasks = async ({ name, completed }) => {
       completed,
     },
   });
-
   const response = await docClient.send(command);
-
   return response;
 };
 

@@ -3,7 +3,6 @@ import { ThemeProvider, createTheme } from "@mui/material";
 import CssBaseline from '@mui/material/CssBaseline';
 import { AddTaskForm } from "./components/AddTaskForm";
 import { Task } from './components/Task';
-// import axios from 'axios';
 import { API_URL } from './utils';
 
 const darkTheme = createTheme({
@@ -14,25 +13,6 @@ const darkTheme = createTheme({
 
 function App() {
   const [tasks, setTasks] = useState([])
-  const axios = require('axios');
-
-  // const fetchTasks = async () => {
-  //   // console.log(API_URL)
-  //   // try {
-  //   //   const { data } = axios.get(API_URL)
-  //   //   .then(r => console.log(r))
-  //   //   // console.log(data)
-  //   //   setTasks(data)
-  //   // } catch (err) {
-  //   //   console.log(err)
-  //   // }
-  //   console.log("fetch tasks function")
-  //   const { data } = axios.get(API_URL)
-  //   console.log(data)
-  //   setTasks(data)
-
-  // };
-
 
   function fetchTasks() {
     fetch(API_URL)
@@ -40,12 +20,9 @@ function App() {
     .then(data => setTasks(data))
   }
 
-
   useEffect(() => {
-    // console.log("useeffect fetch tasks")
     fetchTasks();
   }, [])
-  
 
   return (
     <ThemeProvider theme={ darkTheme }>
