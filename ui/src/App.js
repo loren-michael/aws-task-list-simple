@@ -27,7 +27,10 @@ function App() {
     //   console.log(err)
     // }
     console.log("fetch tasks function")
-    axios.get(API_URL).then(r => console.log(r))
+    const { data } = axios.get(API_URL)
+    console.log(data)
+    setTasks(data)
+
   };
 
   useEffect(() => {
