@@ -14,12 +14,14 @@ const darkTheme = createTheme({
 
 function App() {
   const [tasks, setTasks] = useState([])
+  const axios = require('axios');
 
   const fetchTasks = async () => {
     // console.log(API_URL)
     try {
       const { data } = axios.get(API_URL)
-      console.log(data)
+      .then(r => console.log(r))
+      // console.log(data)
       setTasks(data)
     } catch (err) {
       console.log(err)
